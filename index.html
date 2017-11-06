@@ -1,6 +1,6 @@
 ﻿<html>
   <head>
-    <title>FFXIV Airship Components Calculator - JS edition</title>
+    <title>FFXIV Airship Components Calculator</title>
     <!-- 
       Style and function based on a closed-source PHP original by Arstas Taint of Zodiark.
 
@@ -70,34 +70,34 @@
           get fullvals() { return ["ID", ...this.partTypes, ...this.vals.slice(1)]; },
         
           /* slurped data */
-          data: [[["1野马级船体",1,3,0,0,0,80,-10],
-                  ["2无敌级船体",5,6,0,0,0,94,-14],
-                  ["3企业级船体",15,11,0,0,0,108,-18],
-                  ["4无敌II级船体",25,16,0,0,0,122,-22],
-                  ["5奥德赛级船体",35,21,0,0,0,136,-26],
-                  ["6塔塔诺拉级船体",45,26,0,0,0,150,-30],
-                  ["7威尔特甘斯级船体",50,31,0,0,0,164,-34]],
-                 [["1野马级气囊",1,3,0,-10,80,-10,0],
-                  ["2无敌级螺旋桨",5,6,0,-14,94,-14,0],
-                  ["3企业级气囊",15,11,0,-18,108,-18,0],
-                  ["4无敌II级螺旋桨",25,16,0,-22,122,-22,0],
-                  ["5奥德赛级气囊",35,21,0,-26,136,-26,0],
-                  ["6塔塔诺拉级螺旋桨",45,26,0,-30,150,-30,0],
-                  ["7威尔特甘斯级灵翼",50,31,0,-34,164,-34,0]],
-                 [["1野马级船首",1,3,80,0,0,0,80],
-                  ["2无敌级船首",5,6,94,0,0,0,94],
-                  ["3企业级船首",15,11,108,0,0,0,108],
-                  ["4无敌II级船首",25,16,122,0,0,0,122],
-                  ["5奥德赛级船首",35,21,136,0,0,0,136],
-                  ["6塔塔诺拉级船首",45,26,150,0,0,0,150],
-                  ["7威尔特甘斯级船首",50,31,164,0,0,0,164]],
-                 [["1野马级船尾",1,3,-10,80,-10,0,0],
-                  ["2无敌级船尾",5,6,-14,94,-14,0,0],
-                  ["3企业级船尾",15,11,-18,108,-18,0,0],
-                  ["4无敌II级船尾",25,16,-22,122,-22,0,0],
-                  ["5奥德赛级船尾",35,21,-26,136,-26,0,0],
-                  ["6塔塔诺拉级船尾",45,26,-30,150,-30,0,0],
-                  ["7威尔特甘斯级船尾",45,26,-34,164,-34,0,0]]],
+          data: [[["①野马级船体",1,3,0,0,0,80,-10],
+                  ["②无敌级船体",5,6,0,0,0,94,-14],
+                  ["③企业级船体",15,11,0,0,0,108,-18],
+                  ["④无敌II级船体",25,16,0,0,0,122,-22],
+                  ["⑤奥德赛级船体",35,21,0,0,0,136,-26],
+                  ["⑥塔塔诺拉级船体",45,26,0,0,0,150,-30],
+                  ["⑦威尔特甘斯级船体",50,31,0,0,0,164,-34]],
+                 [["①野马级气囊",1,3,0,-10,80,-10,0],
+                  ["②无敌级螺旋桨",5,6,0,-14,94,-14,0],
+                  ["③企业级气囊",15,11,0,-18,108,-18,0],
+                  ["④无敌II级螺旋桨",25,16,0,-22,122,-22,0],
+                  ["⑤奥德赛级气囊",35,21,0,-26,136,-26,0],
+                  ["⑥塔塔诺拉级螺旋桨",45,26,0,-30,150,-30,0],
+                  ["⑦威尔特甘斯级灵翼",50,31,0,-34,164,-34,0]],
+                 [["①野马级船首",1,3,80,0,0,0,80],
+                  ["②无敌级船首",5,6,94,0,0,0,94],
+                  ["③企业级船首",15,11,108,0,0,0,108],
+                  ["④无敌II级船首",25,16,122,0,0,0,122],
+                  ["⑤奥德赛级船首",35,21,136,0,0,0,136],
+                  ["⑥塔塔诺拉级船首",45,26,150,0,0,0,150],
+                  ["⑦威尔特甘斯级船首",50,31,164,0,0,0,164]],
+                 [["①野马级船尾",1,3,-10,80,-10,0,0],
+                  ["②无敌级船尾",5,6,-14,94,-14,0,0],
+                  ["③企业级船尾",15,11,-18,108,-18,0,0],
+                  ["④无敌II级船尾",25,16,-22,122,-22,0,0],
+                  ["⑤奥德赛级船尾",35,21,-26,136,-26,0,0],
+                  ["⑥塔塔诺拉级船尾",45,26,-30,150,-30,0,0],
+                  ["⑦威尔特甘斯级船尾",45,26,-34,164,-34,0,0]]],
 
           get partNames() {
             delete this.partNames;
@@ -111,10 +111,10 @@
               this.data.reduce((g,ps) =>
                 g.flatMap(sh => ps.map((p,i) => ({
                   parts: [...sh.parts, i],
-                  vals: sh.vals.map((a,i)=>a+p[i+2]) // +2 to skip Name and 等级
+                  vals: sh.vals.map((a,i)=>a+p[i+2]) // +2 to skip Name and Rank
                 }))),
-                [{ parts: [], vals: Array(this.vals.length-1).fill(0) }] // -1 to skip 等级
-              ).map((v,i) => [i].concat(v.parts, v.vals)) /* ID# and flatten */
+                [{ parts: [], vals: Array(this.vals.length-1).fill(0) }] // -1 to skip Rank
+              ).map((v,i)=>[v.parts.reduce((s,i)=>s+(i+1), '')].concat(v.parts,v.vals)) /* ID# and flatten */
             ;
           }
         };
@@ -133,7 +133,7 @@
               const which = shipBuilder.partTypes.indexOf(type);
               element.classList.add('datagrid');
               element.appendChild( cE('table',
-                cE('thead', cE('tr', ...["Name", ...shipBuilder.vals].map(n => cE('th', n)))),
+                cE('thead', cE('tr', ...[type, ...shipBuilder.vals].map(n => cE('th', n)))),
                 cE('tbody', ...shipBuilder.data[which].map(L => 
                    cE('tr', ...L.map(v => cE('td', v.toString())))
                 ))
@@ -229,9 +229,7 @@
               );
               
               displayLogic._combinationsText.firstChild.textContent =
-                len == 0 ? "There are no possible combinations" :
-                len == 1 ? "There is only one possible combination" :
-                           `There are ${len} possible combinations`;
+                len == 0 ? "没有" : `共有 ${len} 种`;
 
               this._lastTableData = data;
             },
@@ -283,8 +281,9 @@
               /* hook up ship stat filters */
               Array.from(document.forms['stat_filters'].elements)
                 .forEach(input => {
-                   const ix = this.headers.indexOf(input.name);
-                   const f = input.name == "配件重量" /* VILE HACK */
+                   const isLimit = input.name === "配件重量上限"; /* VILE HACK */
+                   const ix = this.headers.indexOf(isLimit ? "配件重量" : input.name);
+                   const f = isLimit
                      ? L => L[ix] <= input.value
                      : L => L[ix] >= input.value;
                    this.addFilter(f);
@@ -312,11 +311,13 @@
 
 <body style="overflow-y: scroll">
 
-<h2>Airship Components Calculator, Javascript Edition</h2>
+<h2>飞空艇部件计算器</h2>
 
 <center><p><i>
-   Taken in large part from <a href="http://sandcastle-khadgar.co.uk/media/airships/index.php">the original</a>
-   Airship Components Calculator</a>, by Arstas Taint of Zodiark.
+  翻译自
+  <a href="https://aine-yhisa.neocities.org/airship-parts-calc.html">
+    https://aine-yhisa.neocities.org/airship-parts-calc.html
+  </a>
 </i></p>
 </center>
 
@@ -334,16 +335,16 @@
      display: none;
      visibility: hidden; opacity: 0; height: 0;
   }
-  .spoiler[value="Show"] .spoilerData {
+  .spoiler[value="显示"] .spoilerData {
      display: initial; visibility: visible; opacity: 1; height: auto;
   }
-  .airshipParts h4 { font-weight: normal; font-style: italic; }
+  .airshipParts > div { margin-bottom: 10px }
 </style>
 
 <script>
   /* turn spoiler blocks into actual spoilers */
   window.addEventListener('DOMContentLoaded', () => {
-    const abba = {Hide:'Show', Show:'Hide'};
+    const abba = {'隐藏':'显示', '显示':'隐藏'};
     Array.from(document.querySelectorAll('.spoiler'))
       .forEach(spoiler => {
         const btn = spoiler.querySelector('.sButton');
@@ -351,8 +352,8 @@
           console.log({err: 'no spoiler button', spoiler: spoiler});
           return;
         }
-        spoiler.setAttribute('value', 'Hide');
-        btn.value = 'Show';
+        spoiler.setAttribute('value', '隐藏');
+        btn.value = '显示';
         btn.onclick = () => {
           spoiler.setAttribute('value', btn.value);
           btn.value = abba[btn.value];
@@ -365,7 +366,7 @@
 
 <div class="spoiler rblock" style="display: flex; flex-direction: column;">
   <div style="display: flex; align-items: center; justify-content:space-between;">
-    <div style="flex: 0 0 auto"><b>Attributes reference</b></div>
+    <div style="flex: 0 0 auto"><b>属性参考</b></div>
     <div style="flex-grow: 1; width: 30px;"></div>
     <div style="flex: 0 0 auto; content-align:right;"><input type="button" class="sButton"></div>
   </div>
@@ -389,20 +390,16 @@
 
 <div class="spoiler rblock" style="display: flex; flex-direction: column;">
   <div style="display: flex; align-items: center; justify-content:space-between;">
-    <div style="flex: 0 0 auto"><b>Airship part reference</b></div>
+    <div style="flex: 0 0 auto"><b>部件参考</b></div>
     <div style="flex-grow: 1; width: 30px;"></div>
     <div style="flex: 0 0 auto; content-align:right;"><input type="button" class="sButton"></div>
   </div>
   <div class="spoilerData airshipParts" style="padding: 0px 5px">
     <hr/>
-    <h4>船体</h4>
-    <div id='船体-data-table'"></div>
-    <h4>舾装</h4>
-    <div id='舾装-data-table'"></div>
-    <h4>船首</h4>
-    <div id='船首-data-table'"></div>
-    <h4>船尾</h4>
-    <div id='船尾-data-table'"></div>
+    <div id='船体-data-table'></div>
+    <div id='舾装-data-table'></div>
+    <div id='船首-data-table'></div>
+    <div id='船尾-data-table'></div>
   </div>
 </div>
 
@@ -424,16 +421,17 @@
       font: normal 12px/150% Arial, Helvetica, sans-serif;
     }
     form[name='part_filters'] input, form[name='part_filters'] label {
-      vertical-align: middle; margin-top: 2px;
+      vertical-align: middle; margin-top: 2px; margin-bottom: 1px;
     }
   </style>
   <div class="box">
-    <p>Set attribute value requirements.</p>
+    <p>设置属性需求</p>
     <div class="smallText" style="margin-left:2em; margin-right:0.5em">
-      <form name="stat_filters" style="display: flex; flex-direction: column;">
-        <label><input name="配件重量" type="number" value="61" size="8">
+      <form name="stat_filters" style="display: flex; flex-direction: column; margin-bottom: 16px">
+        <label><input name="配件重量上限" type="number" value="61" size="8">
           配件重量上限 <abbr title="61, for level 50 ships"><b>*</b></abbr>
         </label>
+        <label><input name="配件重量" type="number" value="61" size="8"> 最小配件重量 </label>
         <label><input name="探索性能" type="number" value="0" size="6"> 最小探索性能 </label>
         <label><input name="收集性能" type="number" value="0" size="8"> 最小收集性能 </label>
         <label><input name="巡航速度" type="number" value="0" size="8"> 最小巡航速度 </label>
@@ -445,10 +443,10 @@
   <div style="flex: 1 0 auto;"></div>
   <div class="box">
     <div style="display: flex; align-items: center; justify-content: space-between;">
-      <p>Select available ship parts.</p>
+      <p>选择可用的飞空艇部件</p>
       <span>
-        <button onclick="displayLogic.shipPartsFilterer.setAll(true)">Include All</button>
-        <button onclick="displayLogic.shipPartsFilterer.setAll(false)">Remove All</button>
+        <input type="button" onclick="displayLogic.shipPartsFilterer.setAll(true);" value="包含所有">
+        <input type="button" onclick="displayLogic.shipPartsFilterer.setAll(false);" value="移除所有">
       </span>
     </div>
     <div class="smallText" style="margin: 0 0.5em">
@@ -459,8 +457,7 @@
   </div>
 </div>
 
-<p><span id="combinationsText">There are ninety-four and two-thirds possible combinations</span>
-   of ship parts consistent with the above requirements.</p>
+<p><span id="combinationsText">没有</span>飞空艇部件组合符合条件</p>
 
 <div id='main-table-div'></div>
 
